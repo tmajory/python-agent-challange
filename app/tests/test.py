@@ -7,15 +7,26 @@ from app.tools.get_context import get_context
 from app.tools.parse_kb import parse_kb
 
 @pytest.mark.asyncio
-async def test_integration():
+async def test_integration_message_correct():
     #Teste com mensagem que retorna resposta relevante
     message = "O que é composição?"
     llm_tools = LLMTools()
     parsed_kb = await parse_kb()
     context = await get_context(message, parsed_kb)
     response = llm_tools.send_message(message, context)
-    print(response)
+    print(response.choices[0].message.content)
     assert "answer" in response.choices[0].message.content
+
+@pytest.mark.asyncio
+async def test_integration_message_no_relevant_info():
+    #Teste com mensagem que não retorna resposta relevante
+    message = "Qual a capital da França?"
+    llm_tools = LLMTools()
+    parsed_kb = await parse_kb()
+    context = await get_context(message, parsed_kb)
+    response = llm_tools.send_message(message, context)
+    print(response.choices[0].message.content)
+    assert "Não encontrei informação suficiente na base para responder essa pergunta." in response.choices[0].message.content
 
 
 if __name__ == "__main__":
