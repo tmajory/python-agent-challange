@@ -4,3 +4,5 @@ httpx
 openai
 python-dotenv
 redis
+pytest
+unidecode
