@@ -3,7 +3,7 @@ from .parse_kb import parse_kb
 from .get_keywords_message import get_keywords
 import asyncio
 
-def get_context(message:str, parsed_kb:list):
+async def get_context(message:str, parsed_kb:list):
     keywords = get_keywords(message)
     print(f"Keywords extraídas da mensagem: {keywords}")
     context = []
