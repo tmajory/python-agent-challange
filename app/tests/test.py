@@ -20,7 +20,7 @@ async def test_integration_message_correct():
 @pytest.mark.asyncio
 async def test_integration_message_no_relevant_info():
     #Teste com mensagem que não retorna resposta relevante
-    message = "Qual a capital da França?"
+    message = "O que é composição musical?" #Assumindo que a KB não tem informações sobre composição musical
     llm_tools = LLMTools()
     parsed_kb = await parse_kb()
     context = await get_context(message, parsed_kb)
