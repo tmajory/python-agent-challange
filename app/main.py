@@ -11,7 +11,7 @@ class Message(BaseModel):
     session_id: str | None = None
 
 
-@app.post("/message")
+@app.post("/messages")
 async def receive_message(request: Message):
     message = request.message
     parsed_kb = await parse_kb()
