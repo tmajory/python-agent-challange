@@ -16,8 +16,3 @@ def get_keywords(message:str):
         if word not in articles and word not in interrogatives and word not in prepositions and word not in conective:
             keywords.append(word)    
     return keywords
-       
-if __name__ == "__main__":
-    message = "Qual a composição de um átomo?"
-    keywords = get_keywords(message)
-    print(keywords)
